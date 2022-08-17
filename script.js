@@ -112,4 +112,58 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (startIndex, mainIndex) {
+    return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({ startIndex, mainIndex, time, address }) {
+    console.log(
+      `Order recived! ${this.starterMenu[startIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+////// destructuring array
+// let [main, secondary] = restaurant.categories;
+// console.log(main, secondary);
+
+// [main, secondary] = [secondary, main];
+// console.log(main, secondary);
+
+// const [starter, mainCourse] = restaurant.order(2, 0);
+// console.log(starter, mainCourse);
+
+////// Destructuring Object
+
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+// const { name: restaurantName, menu = [] } = restaurant;
+// console.log(restaurantName, menu);
+
+///// nested object
+// const {
+//   fri: { open, close },
+//   sat: { open: o, close: c },
+// } = openingHours;
+// console.log(open, close, o, c);
+
+// restaurant.orderDelivery({
+//   time: '23:30',
+//   address: 'vancouver',
+//   mainIndex: 2,
+//   startIndex: 0,
+// });
+
+////The Spread Operator
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Shallow Copy
+const menuCopy = [...restaurant.mainMenu];
+
+// Join 2 array
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);

@@ -152,9 +152,9 @@ const restaurant = {
 // console.log(restaurant.order?.(0, 1) ?? 'method is not exist.');
 
 /////// LOOP OVER OBJECT
-for (const day of Object.keys(openingHours)) {
-  console.log(day);
-}
+// for (const day of Object.keys(openingHours)) {
+//   console.log(day);
+// }
 
 ////// FOR-OF LOOP
 // const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
@@ -344,3 +344,33 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 😀
 */
+const { scored, odds } = game;
+const oddsEntries = Object.entries(odds);
+
+for (const [goal, player] of scored.entries()) {
+  console.log(`Goal ${goal + 1}: ${player}`);
+}
+
+const oddsValue = Object.values(odds);
+let avg = 0;
+for (const odd of oddsValue) {
+  avg += odd / oddsValue.length;
+}
+// avg /= oddsValue.length;
+console.log(avg);
+
+// const oddss = Object.values(game.odds);
+// let average = 0;
+// for (const odd of oddss) average += odd;
+// average /= oddss.length;
+// console.log(average);
+
+for (const [key, value] of oddsEntries) {
+  (game[key] && console.log(`Odd of victory ${game[key]}: ${value}`)) ||
+    (!game[key] && console.log(`Odd of draw: ${value}`));
+}
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
